@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: c27125346fb9a112a60110a1f23bc3357eea1d3f
-ms.sourcegitcommit: 0113753baec606c586c0bdf4c9452052a096c084
+ms.openlocfilehash: f5fa14f0e3302e6c48c58f00c7a4c3043776c4a0
+ms.sourcegitcommit: 30dae3c49fe96a790479d08844a71fcb7851aa46
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/13/2022
-ms.locfileid: "137857647"
+ms.lasthandoff: 03/15/2022
+ms.locfileid: "139867893"
 ---
 # <a name="az-120-module-4-deploy-sap-on-azure"></a>AZ 120 모듈 4: Azure에 SAP 배포
 # <a name="lab-3a-implement-sap-architecture-on-azure-vms-running-linux"></a>랩 3a: Linux를 사용하는 Azure VM에서 SAP 아키텍처 구현
@@ -98,7 +98,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
     az network vnet subnet list --resource-group $RESOURCE_GROUP_NAME --vnet-name $VNET_NAME --query "[?name == '$SUBNET_NAME'].id" --output tsv
     ```
 
-1.  결과 값을 클립보드에 복사합니다. 다음 작업에서 해당 값이 필요합니다.
+1.  결과 값을 클립보드에 복사합니다. 다음 작업에서 필요합니다.
 
 ### <a name="task-2-deploy-azure-resource-manager-template-provisioning-azure-vms-running-linux-suse-that-will-host-a-highly-available-sap-netweaver-deployment"></a>작업 2: 고가용성 SAP NetWeaver 배포를 호스트할 Linux SUSE를 실행하는 Azure VM을 프로비전하는 Azure Resource Manager 템플릿 배포
 
@@ -181,7 +181,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
 
     -   가용성 옵션: **인프라 중복은 필요하지 않음**
 
-    -   이미지: **Windows Server 2019 Datacenter - Gen 1**
+    -   이미지: **Windows Server 2019 Datacenter - Gen2**
 
     -   크기: **Standard D2s_v3** 또는 유사한 항목
 
@@ -553,7 +553,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
     az account show --query '{id:id, tenantId:tenantId}' --output json
     ```
 
-1.  결과 값을 메모장에 복사합니다. 다음 작업에서 해당 값이 필요합니다.
+1.  결과 값을 메모장에 복사합니다. 다음 작업에서 필요합니다.
 
 
 ### <a name="task-4-create-an-azure-ad-application-for-the-stonith-device"></a>작업 4: STONITH 디바이스에 대한 Azure AD 애플리케이션 만들기
