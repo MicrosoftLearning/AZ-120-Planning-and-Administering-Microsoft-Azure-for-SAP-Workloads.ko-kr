@@ -1,15 +1,15 @@
 ---
-ms.openlocfilehash: 464e607c662cfac9f65e17eefb7f53e9ebc61eb3
-ms.sourcegitcommit: 0113753baec606c586c0bdf4c9452052a096c084
+ms.openlocfilehash: 95cd67cfd85258abff0e906b20673ecf09d071a0
+ms.sourcegitcommit: 30dae3c49fe96a790479d08844a71fcb7851aa46
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/13/2022
-ms.locfileid: "137857687"
+ms.lasthandoff: 03/15/2022
+ms.locfileid: "139867889"
 ---
 # <a name="az-120-module-2-explore-the-foundations-of-iaas-for-sap-on-azure"></a>AZ 120 모듈 2: Azure의 SAP용 IaaS의 기본 살펴보기
 # <a name="lab-1b-implement-windows-clustering-on-azure-vms"></a>랩 1b: Azure VM에서 Windows 클러스터링 구현
 
-예상 소요 시간: 120분
+예상 시간: 120분
 
 이 랩의 모든 작업은 Azure Portal(PowerShell Cloud Shell 세션 포함)에서 수행됩니다.  
 
@@ -43,7 +43,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
 소요 시간: 50분
 
-이 연습에서는 Windows Server 2019를 실행하는 Azure VM에서 장애 조치(failover) 클러스터링을 구성하는 데 필요한 Azure 인프라 컴퓨팅 구성 요소를 배포합니다. 여기에는 동일한 가상 네트워크 내의 동일한 가용성 집합에 Active Directory 도메인 컨트롤러 쌍을 배포한 후 Windows Server 2019를 실행하는 Azure VM 쌍을 배포하는 작업이 포함됩니다. 도메인 컨트롤러 배포를 자동화하려면 <https://github.com/polichtm/azure-quickstart-templates/tree/master/active-directory-new-domain-ha-2-dc>에서 사용할 수 있는 Azure Resource Manager 빠른 시작 템플릿을 사용합니다.
+이 연습에서는 Windows Server 2019를 실행하는 Azure VM에서 장애 조치(failover) 클러스터링을 구성하는 데 필요한 Azure 인프라 컴퓨팅 구성 요소를 배포합니다. 여기에는 동일한 가상 네트워크 내의 동일한 가용성 집합에 Active Directory 도메인 컨트롤러 쌍을 배포한 후 Windows Server 2019를 실행하는 Azure VM 쌍을 배포하는 작업이 포함됩니다. 도메인 컨트롤러 배포를 자동화하려면 <https://aka.ms/az120-1bdeploy>에서 사용할 수 있는 Azure Resource Manager 빠른 시작 템플릿을 사용합니다.
 
 ### <a name="task-1-deploy-a-pair-of-azure-vms-running-highly-available-active-directory-domain-controllers-by-using-an-azure-resource-manager-template"></a>작업 1: Azure Resource Manager 템플릿을 사용하여 고가용성 Active Directory 도메인 컨트롤러를 실행하는 Azure VM 쌍 배포
 
@@ -51,7 +51,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
 1.  메시지가 표시되면 이 랩에 사용할 Azure 구독에 대한 소유자 또는 기여자 역할이 있는 직장, 학교 또는 개인 Microsoft 계정으로 로그인합니다.
 
-1.  새 웹 브라우저 탭을 열고 Azure 빠른 시작 템플릿 페이지(<https://github.com/polichtm/azure-quickstart-templates>)로 이동하여 **가용성 집합에서 새 Windows VM 2개, 새 AD 포리스트, 도메인 및 DC 2개 만들기** 라는 템플릿을 찾은 다음 **Azure에 배포** 단추를 클릭하여 배포를 시작합니다.
+1.  새 웹 브라우저 탭을 열고 Azure 빠른 시작 템플릿 페이지(<https://aka.ms/az120-1bdeploy>)로 이동하여 **가용성 집합에서 새 Windows VM 2개, 새 AD 포리스트, 도메인 및 DC 2개 만들기** 라는 템플릿을 찾은 다음 **Azure에 배포** 단추를 클릭하여 배포를 시작합니다.
 
 1.  **사용자 지정 배포** 블레이드에서 다음 설정을 지정하고 **검토 + 만들기** 를 클릭한 다음 **만들기** 를 클릭하여 배포를 시작합니다.
 
@@ -87,7 +87,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
        - Azure Portal에서 이전 단계에서 식별한 VM의 블레이드로 이동하여 **확장** 을 선택한 후 **확장** 블레이드에서 사용자 지정 스크립트 확장을 제거합니다.
 
-       - Azure Portal에서 **az12001b-ad-RG** 리소스 그룹 블레이드로 이동하여 **배포**, 실패한 배포에 대한 링크, **재배포**, 대상 리소스 그룹(**az12001b-ad-RG**)을 차례로 선택하고 루트 계정의 암호(**Pa55w.rd1234**)를 제공합니다.
+       - <https://aka.ms/az120-1bdeploy>의 GitHub 빠른 시작 템플릿으로 이동하고, **Azure에 배포** 를 선택하고, 대상 리소스 그룹(**az12001b-ad-RG**)을 선택하고, 루트 계정(**Pa55w.rd1234**)에 대한 암호를 제공합니다.
 
 
 ### <a name="task-2-deploy-a-pair-of-azure-vms-running-windows-server-2019-in-a-new-availability-set"></a>작업 2: 새 가용성 집합에서 Windows Server 2019를 실행하는 Azure VM 쌍을 배포합니다.
@@ -108,7 +108,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   가용성 집합: *이름이* **az12001b-cl-avset***이고 2개의 장애 도메인과 5개의 업데이트 도메인이 있는 새 가용성 집합*
 
-    -   이미지: **Windows Server 2019 Datacenter - Gen1**
+    -   이미지: **Windows Server 2019 Datacenter - Gen2**
 
     -   크기: **표준 D4s v3**
 
@@ -118,7 +118,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   공용 인바운드 포트: **선택한 포트 허용**
 
-    -   인바운드 포트 선택: **RDP (3389)**
+    -   인바운드 포트 선택: **RDP(3389)**
 
     -   기존 Windows Server 라이선스를 사용하시겠습니까? **아니요**
 
@@ -186,7 +186,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   공용 인바운드 포트: **선택한 포트 허용**
 
-    -   인바운드 포트 선택: **RDP (3389)**
+    -   인바운드 포트 선택: **RDP(3389)**
 
     -   기존 Windows Server 라이선스를 사용하시겠습니까? **아니요**
 
@@ -440,17 +440,15 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   성능: **표준**
 
-    -   계정 종류: **스토리지(범용 v1)**
-
     -   복제: **LRS(로컬 중복 스토리지)**
 
     -   연결 방법: **공용 엔드포인트(모든 네트워크)**
 
-    -   필요한 보안 전송: **사용**
+    -   REST API 작업을 위한 보안 전송 필요: **사용**
 
     -   대용량 파일 공유: **Disabled**
 
-    -   Blob 일시 삭제: **Disabled**
+    -   Blob, 컨테이너 및 파일에 대한 일시 삭제: **Disabled**
 
     -   계층 구조 네임스페이스: **Disabled**
 
@@ -593,6 +591,8 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   SKU: **표준**
 
+    -   프런트 엔드 IP 이름: **frontend-ip1**
+    
     -   가상 네트워크: **adVNET**
 
     -   서브넷: **clSubnet**
@@ -767,7 +767,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   가용성 옵션: **인프라 중복은 필요하지 않음**
 
-    -   이미지: **Windows Server 2019 Datacenter**
+    -   이미지: **Windows Server 2019 Datacenter - Gen2**
 
     -   크기: **Standard DS1 v2** _ 또는 유사한 항목_
 
