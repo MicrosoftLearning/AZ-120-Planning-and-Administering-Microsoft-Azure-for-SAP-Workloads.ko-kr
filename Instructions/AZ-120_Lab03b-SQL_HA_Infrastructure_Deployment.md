@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: a3328b8fa21b3365dabdf9680c43fd5ee96cde3f
-ms.sourcegitcommit: 0113753baec606c586c0bdf4c9452052a096c084
+ms.openlocfilehash: c24d0da0cd66795235076080e14c561c7399a16f
+ms.sourcegitcommit: 30dae3c49fe96a790479d08844a71fcb7851aa46
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/13/2022
-ms.locfileid: "137857681"
+ms.lasthandoff: 03/15/2022
+ms.locfileid: "139867896"
 ---
 # <a name="az-120-module-4-deploy-sap-on-azure"></a>AZ 120 모듈 4: Azure에 SAP 배포
 # <a name="lab-3b-implement-sap-architecture-on-azure-vms-running-windows"></a>랩 3b: Windows를 실행하는 Azure VM에서 SAP 아키텍처 구현
@@ -141,7 +141,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Wi
     (Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vNet).Id
     ```
 
-1.  결과 값을 클립보드에 복사합니다. 다음 작업에서 해당 값이 필요합니다.
+1.  결과 값을 클립보드에 복사합니다. 다음 작업에서 필요합니다.
 
 ### <a name="task-3-deploy-azure-resource-manager-template-provisioning-azure-vms-running-windows-server-2016-that-will-host-a-highly-available-sap-netweaver-deployment"></a>작업 3: 고가용성 SAP NetWeaver 배포를 호스트할 Windows Server 2016을 실행하는 Azure VM을 프로비전하는 Azure Resource Manager 템플릿 배포
 
@@ -280,7 +280,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Wi
 
     -   가용성 옵션: **인프라 중복은 필요하지 않음**
 
-    -   이미지: **Windows Server 2019 Datacenter**
+    -   이미지: **Windows Server 2019 Datacenter Gen2**
 
     -   크기: **Standard_D2s_v3**
 
@@ -292,7 +292,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Wi
 
     -   인바운드 포트 선택: **RDP (3389)**
 
-    -   이미 Windows 라이선스가 있습니까? ‘아니요’
+    -   이미 Windows 라이선스가 있습니까? **‘아니요’** 가속화된 네트워킹: 해제
 
     -   OS 디스크 유형: **표준 HDD**
 
@@ -308,21 +308,21 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Wi
 
     -   인바운드 포트 선택: **RDP (3389)**
 
-    -   가속화된 네트워킹: 해제
+    -   가속화된 네트워킹: **해제**
 
-    -   기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치: ‘아니요’
+    -   기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치: **‘아니요’**
 
-    -   부팅 진단: 해제
+    -   부팅 진단: **해제**
 
-    -   OS 게스트 진단: 해제
+    -   OS 게스트 진단: **해제**
 
-    -   시스템 할당 관리 ID: 해제
+    -   시스템 할당 관리 ID: **해제**
 
-    -   AAD 자격 증명으로 로그인(미리 보기): 해제
+    -   AAD 자격 증명으로 로그인(미리 보기): **해제**
 
-    -   자동 종료 사용: 해제
+    -   자동 종료 사용: **해제**
 
-    -   백업 활성화: 해제
+    -   백업 활성화: **해제**
 
     -   확장: *없음*
 
@@ -420,17 +420,15 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Wi
 
     -   성능: **표준**
 
-    -   계정 종류: **스토리지(범용 v1)**
-
     -   복제: **LRS(로컬 중복 스토리지)**
 
     -   연결 방법: **공용 엔드포인트(모든 네트워크)**
 
-    -   필요한 보안 전송: **사용**
+    -   REST API 작업을 위한 보안 전송 필요: **사용**
 
     -   대용량 파일 공유: **Disabled**
 
-    -   Blob 일시 삭제: **Disabled**
+    -   Blob, 컨테이너 및 파일 공유 일시 삭제: **Disabled**
 
     -   계층 구조 네임스페이스: **Disabled**
 
