@@ -1,19 +1,22 @@
 ---
-ms.openlocfilehash: c24d0da0cd66795235076080e14c561c7399a16f
-ms.sourcegitcommit: 30dae3c49fe96a790479d08844a71fcb7851aa46
+lab:
+  title: 04b - Windows를 실행하는 Azure VM에서 SAP 아키텍처 구현
+  module: Module 04 - Deploy SAP on Azure
+ms.openlocfilehash: ac76cdb886422455b7ebb8ad110498249d8de148
+ms.sourcegitcommit: 2d98b3c8cdd6f7b2b1a9a43868559bef227a5266
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/15/2022
-ms.locfileid: "139867896"
+ms.lasthandoff: 05/19/2022
+ms.locfileid: "145179692"
 ---
 # <a name="az-120-module-4-deploy-sap-on-azure"></a>AZ 120 모듈 4: Azure에 SAP 배포
-# <a name="lab-3b-implement-sap-architecture-on-azure-vms-running-windows"></a>랩 3b: Windows를 실행하는 Azure VM에서 SAP 아키텍처 구현
+# <a name="lab-4b-implement-sap-architecture-on-azure-vms-running-windows"></a>랩 4b: Windows를 실행하는 Azure VM에서 SAP 아키텍처 구현
 
 예상 소요 시간: 150분
 
 이 랩의 모든 작업은 Azure Portal(PowerShell Cloud Shell 세션 포함)에서 수행됩니다.  
 
-   > **참고**: Cloud Shell을 사용하지 않을 때는 랩 가상 머신에 Az PowerShell 모듈이 설치되어 있어야 합니다([ **https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi** ](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi)).
+   > **참고**: Cloud Shell을 사용하지 않을 때는 랩 가상 머신에 Az PowerShell 모듈이 설치되어 있어야 합니다([ **https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi**](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi)).
 
 랩 파일: 없음
 
@@ -198,9 +201,9 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Wi
 
 ### <a name="task-4-deploy-the-scale-out-file-server-sofs-cluster"></a>작업 4: SOFS(스케일 아웃 파일 서버) 클러스터 배포
 
-이 작업에서는 GitHub([ **https://github.com/robotechredmond/301-storage-spaces-direct-md** ](https://github.com/robotechredmond/301-storage-spaces-direct-md))의 Azure Resource Manager 빠른 시작 템플릿을 사용하여 SAP ASCS 서버에 대한 파일 공유를 호스트할 SOFS(스케일 아웃 파일 서버) 클러스터를 배포합니다. 
+이 작업에서는 GitHub([ **https://github.com/robotechredmond/301-storage-spaces-direct-md**](https://github.com/robotechredmond/301-storage-spaces-direct-md))의 Azure Resource Manager 빠른 시작 템플릿을 사용하여 SAP ASCS 서버에 대한 파일 공유를 호스트할 SOFS(스케일 아웃 파일 서버) 클러스터를 배포합니다. 
 
-1.  랩 컴퓨터에서 브라우저를 시작하고 [ **https://github.com/robotechredmond/301-storage-spaces-direct-md** ](https://github.com/robotechredmond/301-storage-spaces-direct-md)로 이동합니다. 
+1.  랩 컴퓨터에서 브라우저를 시작하고 [ **https://github.com/robotechredmond/301-storage-spaces-direct-md**](https://github.com/robotechredmond/301-storage-spaces-direct-md)로 이동합니다. 
 
     > **참고**: Microsoft Edge 또는 타사 브라우저를 사용해야 합니다. Internet Explorer를 사용하지 마십시오.
 

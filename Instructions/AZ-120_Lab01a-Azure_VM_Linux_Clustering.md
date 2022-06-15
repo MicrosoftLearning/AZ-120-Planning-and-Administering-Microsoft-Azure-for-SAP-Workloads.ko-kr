@@ -1,19 +1,22 @@
 ---
-ms.openlocfilehash: 719d5988e5f36bef026d781ba3f5f82893e77efc
-ms.sourcegitcommit: 3d7a4cc1ab7f6dcb68f259736361cfe76302b595
+lab:
+  title: 02a - Azure VM에서 Linux 클러스터링 구현
+  module: Module 02 - Explore the foundations of IaaS for SAP on Azure
+ms.openlocfilehash: 8c67722c10ee611341ab131231cbf9ab5064792f
+ms.sourcegitcommit: e16233cdb647e370a6a732eebd2dfcabab19b03a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/24/2022
-ms.locfileid: "140872847"
+ms.lasthandoff: 06/01/2022
+ms.locfileid: "145995287"
 ---
 # <a name="az-120-module-2-explore-the-foundations-of-iaas-for-sap-on-azure"></a>AZ 120 모듈 2: Azure의 SAP용 IaaS의 기본 살펴보기
-# <a name="lab-1a-implement-linux-clustering-on-azure-vms"></a>랩 1a: Azure VM에서 Linux 클러스터링 구현
+# <a name="lab-2a-implement-linux-clustering-on-azure-vms"></a>랩 2a: Azure VM에서 Linux 클러스터링 구현
 
 예상 소요 시간: 90분
 
 이 랩의 모든 작업은 Azure Portal(Bash Cloud Shell 세션 포함)에서 수행됩니다.  
 
-   > **참고**: Cloud Shell을 사용하지 않을 때는 랩 가상 머신에 Azure CLI가 설치되어 있어야 하며([ **https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows**](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows)), PuTTY([ **https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html** ](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)에서 제공)와 같은 SSH 클라이언트를 포함해야 합니다.
+   > **참고**: Cloud Shell을 사용하지 않을 때는 랩 가상 머신에 Azure CLI가 설치되어 있어야 하며([ **https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows**](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows)), PuTTY([ **https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html**](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)에서 제공)와 같은 SSH 클라이언트를 포함해야 합니다.
 
 랩 파일: 없음
 
@@ -633,13 +636,13 @@ Azure에 SAP HANA를 배포하기 위한 준비 과정에서 Adatum Corporation�
 
 1. **az12001a-vm0** 블레이드에서 **az12001a-vm0 \| 네트워킹** 블레이드로 이동하고, **az12001a-vm0 \| 네트워킹** 블레이드에서 네트워크 어댑터와 연결된 공용 IP 주소 **az12001a-vm0-ip** 를 나타내는 항목을 선택합니다.
 
-1. **az12001a-vm0-ip** 블레이드에서 **연결 해제** 를 선택하여 네트워크 인터페이스에서 공용 IP 주소 연결을 끊은 다음, **삭제** 를 선택하여 이를 삭제합니다.
+1. **az12001a-vm0-ip** 블레이드에서 **분리** 를 선택한 다음, **예** 를 선택하여 네트워크 인터페이스에서 공용 IP 주소의 연결을 끊고, **삭제** 를 선택한 다음, **예** 를 선택하여 이를 삭제합니다.
 
 1. Azure portal에서 **az12001a-vm1** Azure VM의 블레이드로 이동합니다.
 
 1. **az12001a-vm1** 블레이드에서 **az12001a-vm1 \| 네트워킹** 블레이드로 이동하고, **az12001a-vm1 \| 네트워킹** 블레이드에서 네트워크 어댑터와 연결된 공용 IP 주소 **az12001a-vm1-ip** 를 나타내는 항목을 선택합니다.
 
-1. **az12001a-vm1-ip** 블레이드에서 **연결 해제** 를 선택하여 네트워크 인터페이스에서 공용 IP 주소 연결을 끊은 다음, **삭제** 를 선택하여 이를 삭제합니다.
+1. **az12001a-vm1-ip** 블레이드에서 **분리** 를 선택한 다음, **예** 를 선택하여 네트워크 인터페이스에서 공용 IP 주소의 연결을 끊고, **삭제** 를 선택한 다음, **예** 를 선택하여 이를 삭제합니다.
 
 1. Azure Portal에서 **az12001a-vm0** Azure VM의 블레이드로 이동합니다.
 
@@ -883,7 +886,7 @@ Azure에 SAP HANA를 배포하기 위한 준비 과정에서 Adatum Corporation�
 
 1. RDP를 통해 새로 프로비전된 Azure VM에 연결합니다. 
 
-1. az12001a-vm2에 대한 RDP 세션에서 PuTTY를 다운로드([ **https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html** ](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html))합니다.
+1. az12001a-vm2에 대한 RDP 세션에서 PuTTY를 다운로드([ **https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html**](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html))합니다.
 
 1. 개인 IP 주소(각각 192.168.0.4 및 192.168.0.5)를 통해 az12001a-vm0 및 az12001a-vm1에 대한 SSH 세션을 설정할 수 있습니다. 
 

@@ -1,19 +1,22 @@
 ---
-ms.openlocfilehash: f5fa14f0e3302e6c48c58f00c7a4c3043776c4a0
-ms.sourcegitcommit: 30dae3c49fe96a790479d08844a71fcb7851aa46
+lab:
+  title: 04a - Linux를 실행하는 Azure VM에서 SAP 아키텍처 구현
+  module: Module 04 - Deploy SAP on Azure
+ms.openlocfilehash: 477438705acbd5fc3c0ac796353e77ef8a352dc5
+ms.sourcegitcommit: 2d98b3c8cdd6f7b2b1a9a43868559bef227a5266
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/15/2022
-ms.locfileid: "139867893"
+ms.lasthandoff: 05/19/2022
+ms.locfileid: "145179695"
 ---
 # <a name="az-120-module-4-deploy-sap-on-azure"></a>AZ 120 모듈 4: Azure에 SAP 배포
-# <a name="lab-3a-implement-sap-architecture-on-azure-vms-running-linux"></a>랩 3a: Linux를 사용하는 Azure VM에서 SAP 아키텍처 구현
+# <a name="lab-4a-implement-sap-architecture-on-azure-vms-running-linux"></a>랩 4a: Linux를 사용하는 Azure VM에서 SAP 아키텍처 구현
 
 예상 소요 시간: 100분
 
 이 랩의 모든 작업은 Azure Portal(Bash Cloud Shell 세션 포함)에서 수행됩니다.  
 
-   > **참고**: Cloud Shell을 사용하지 않는 경우 랩 가상 머신에 Azure CLI가 설치되어 있어야 합니다([ **https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows** ](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows)).
+   > **참고**: Cloud Shell을 사용하지 않는 경우 랩 가상 머신에 Azure CLI가 설치되어 있어야 합니다([ **https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows**](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows)).
 
 랩 파일: 없음
 
@@ -102,7 +105,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
 
 ### <a name="task-2-deploy-azure-resource-manager-template-provisioning-azure-vms-running-linux-suse-that-will-host-a-highly-available-sap-netweaver-deployment"></a>작업 2: 고가용성 SAP NetWeaver 배포를 호스트할 Linux SUSE를 실행하는 Azure VM을 프로비전하는 Azure Resource Manager 템플릿 배포
 
-1.  랩 컴퓨터에서 브라우저를 시작하고 [ **https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-md** ](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-md)로 이동합니다.
+1.  랩 컴퓨터에서 브라우저를 시작하고 [ **https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-md**](https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/sap/sap-3-tier-marketplace-image-md)로 이동합니다.
 
     > **참고**: Microsoft Edge 또는 타사 브라우저를 사용해야 합니다. Internet Explorer를 사용하지 마십시오.
 
@@ -193,7 +196,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
 
     -   인바운드 포트 선택: **RDP (3389)**
 
-    -   이미 Windows 라이선스가 있습니까? ‘아니요’
+    -   이미 Windows 라이선스가 있습니까? **‘아니요’** 가속화된 네트워킹: 해제
 
     -   OS 디스크 유형: **표준 HDD**
 
@@ -209,19 +212,19 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
 
     -   인바운드 포트 선택: **RDP (3389)**
 
-    -   가속화된 네트워킹: 해제
+    -   가속화된 네트워킹: **해제**
 
     -   기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치: ‘아니요’
 
     -   부팅 진단: 사용 안 함
 
-    -   OS 게스트 진단: 해제
+    -   OS 게스트 진단: **해제**
 
-    -   시스템 할당 관리 ID: 해제
+    -   시스템 할당 관리 ID: **해제**
 
-    -   AAD 자격 증명으로 로그인(미리 보기): 해제
+    -   AAD 자격 증명으로 로그인(미리 보기): **해제**
 
-    -   자동 종료 사용: 해제
+    -   자동 종료 사용: **해제**
 
     -   백업 활성화: 해제
 
@@ -275,7 +278,7 @@ Azure에서 SAP NetWeaver 배포를 준비하기 위해 Adatum Corporation은 Li
 
 1.  az12003a-vm0에 대한 RDP 세션 내의 서버 관리자에서 **로컬 서버** 보기로 이동하고 **IE 고급 보안 구성** 을 끕니다.
 
-1.  az12003a-vm0에 대한 RDP 세션에서 PuTTY를 다운로드([ **https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html** ](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html))하여 설치합니다.
+1.  az12003a-vm0에 대한 RDP 세션에서 PuTTY를 다운로드([ **https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html**](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html))하여 설치합니다.
 
 1.  PuTTY를 사용하여 SSH를 통해 **i20-db-0** Azure VM에 연결합니다. 보안 경고를 승인하고 메시지가 표시되면 다음 자격 증명을 입력합니다.
 

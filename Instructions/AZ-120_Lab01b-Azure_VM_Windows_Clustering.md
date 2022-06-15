@@ -1,19 +1,22 @@
 ---
-ms.openlocfilehash: 95cd67cfd85258abff0e906b20673ecf09d071a0
-ms.sourcegitcommit: 30dae3c49fe96a790479d08844a71fcb7851aa46
+lab:
+  title: 02b - Azure VM에서 Windows 클러스터링 구현
+  module: Module 02 - Explore the foundations of IaaS for SAP on Azure
+ms.openlocfilehash: e3158d4c4dcfeda55b2ecd9caf1761e014c21b3d
+ms.sourcegitcommit: 2d98b3c8cdd6f7b2b1a9a43868559bef227a5266
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/15/2022
-ms.locfileid: "139867889"
+ms.lasthandoff: 05/19/2022
+ms.locfileid: "145179686"
 ---
 # <a name="az-120-module-2-explore-the-foundations-of-iaas-for-sap-on-azure"></a>AZ 120 모듈 2: Azure의 SAP용 IaaS의 기본 살펴보기
-# <a name="lab-1b-implement-windows-clustering-on-azure-vms"></a>랩 1b: Azure VM에서 Windows 클러스터링 구현
+# <a name="lab-2b-implement-windows-clustering-on-azure-vms"></a>랩 2b: Azure VM에서 Windows 클러스터링 구현
 
 예상 시간: 120분
 
 이 랩의 모든 작업은 Azure Portal(PowerShell Cloud Shell 세션 포함)에서 수행됩니다.  
 
-   > **참고**: Cloud Shell을 사용하지 않을 때는 랩 가상 머신에 Az PowerShell 모듈이 설치되어 있어야 합니다([ **https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi** ](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi)).
+   > **참고**: Cloud Shell을 사용하지 않을 때는 랩 가상 머신에 Az PowerShell 모듈이 설치되어 있어야 합니다([ **https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi**](https://docs.microsoft.com/en-us/powershell/azure/install-az-ps-msi)).
 
 랩 파일: 없음
 
@@ -118,7 +121,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   공용 인바운드 포트: **선택한 포트 허용**
 
-    -   인바운드 포트 선택: **RDP(3389)**
+    -   인바운드 포트 선택: **RDP (3389)**
 
     -   기존 Windows Server 라이선스를 사용하시겠습니까? **아니요**
 
@@ -186,7 +189,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   공용 인바운드 포트: **선택한 포트 허용**
 
-    -   인바운드 포트 선택: **RDP(3389)**
+    -   인바운드 포트 선택: **RDP (3389)**
 
     -   기존 Windows Server 라이선스를 사용하시겠습니까? **아니요**
 
@@ -799,7 +802,7 @@ Adatum Corporation은 데이터베이스 관리 시스템으로 SQL Server를 �
 
     -   가속화된 네트워킹: **해제**
 
-    -   기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치: **아니요**
+    -   기존 부하 분산 솔루션 뒤에 이 가상 머신을 배치: **‘아니요’**
 
     -   부팅 진단: **해제**
 
