@@ -1,16 +1,8 @@
----
-ms.openlocfilehash: 5cf6ad2fc19b92d11ea26eee7dea0e40548d09da
-ms.sourcegitcommit: 0113753baec606c586c0bdf4c9452052a096c084
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/13/2022
-ms.locfileid: "137857684"
----
 # <a name="demonstration-explore-role-assignments-and-role-based-access-control"></a>데모: 역할 할당 및 역할 기반 액세스 제어 탐색
 
 ## <a name="locate-access-control-blade"></a>액세스 제어 창 찾기
 
-1. Azure Portal에 액세스하고 리소스 그룹을 선택합니다. 어떤 리소스 그룹을 사용하는지 메모합니다. 
+1. Access the Azure portal, and select a resource group. Make a note of what resource group you use. 
 2. **액세스 제어(IAM)** 창을 닫습니다. 
 3. 이 창은 액세스를 제어할 수 있도록 다양한 리소스에 대해 사용할 수 있습니다.
 
@@ -24,16 +16,16 @@ ms.locfileid: "137857684"
 
 ## <a name="add-a-role-assignment"></a>역할 할당 추가
 
-1. **역할 할당 추가** 를 선택합니다. 
+1. **역할 할당 추가**를 선택합니다. 
 
     + **역할**: *소유자*
     + **Select**: *관리자*
-    + 변경 내용을 **저장** 합니다. 
+    + 변경 내용을 **저장**합니다. 
 
-2. **액세스 확인** 을 선택합니다.
+2. **액세스 확인**을 선택합니다.
 3. Chris Green **찾기**.
 4. 관리자 그룹의 일부이며 소유자입니다. 
-5. **할당을 거부** 할 수 있습니다. 
+5. **할당을 거부**할 수 있습니다. 
 
 ## <a name="explore-powershell-commands"></a>PowerShell 명령 살펴보기
 

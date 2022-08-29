@@ -1,31 +1,23 @@
----
-ms.openlocfilehash: 18555523da5c295a9e0d961f9339e48fffbc6ae1
-ms.sourcegitcommit: 0113753baec606c586c0bdf4c9452052a096c084
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/13/2022
-ms.locfileid: "137857657"
----
 # <a name="demonstration-explore-azcopy"></a>데모: AzCopy 살펴보기
 
 ## <a name="download-azcopy"></a>AzCopy 다운로드
 
-먼저 AzCopy V10 실행 파일을 컴퓨터의 아무 디렉터리에나 다운로드합니다. AzCopy V10은 실행 파일일 뿐 이므로 아무것도 설치할 것이 없습니다.
+First, download the AzCopy V10 executable file to any directory on your computer. AzCopy V10 is just an executable file, so there's nothing to install.
 
 - [Windows 64비트](https://aka.ms/downloadazcopy-v10-windows)(zip)
 - [Windows 32비트](https://aka.ms/downloadazcopy-v10-windows-32bit)(zip)
 - [Linux x86-64](https://aka.ms/downloadazcopy-v10-linux)(tar)
 - [macOS](https://aka.ms/downloadazcopy-v10-mac)(zip)
 
-관련 파일은 zip 파일(Windows 및 Mac) 또는 tar 파일(Linux)로 압축되어 있습니다. Linux에서 tar 파일을 다운로드하고 압축을 풀려면 Linux 배포에 대한 설명서를 참조하세요.
+These files are compressed as a zip file (Windows and Mac) or a tar file (Linux). To download and decompress the tar file on Linux, see the documentation for your Linux distribution.
 
 ## <a name="run-azcopy"></a>AzCopy 실행
 
-편의상, AzCopy 실행 파일의 디렉터리 위치를 시스템 경로에 추가하여 사용하기 쉽도록 하는 것이 좋습니다. 이렇게 하면 시스템의 어느 디렉터리에서나 `azcopy`를 입력할 수 있습니다.
+For convenience, consider adding the directory location of the AzCopy executable to your system path for ease of use. That way you can type <ph id="ph1">`azcopy`</ph> from any directory on your system.
 
 AzCopy 디렉터리를 경로에 추가하지 않도록 선택하는 경우 디렉터리를 AzCopy 실행 파일의 위치로 변경하고 Windows PowerShell 명령 프롬프트에서 `azcopy` 또는 `.\azcopy`를 입력해야 합니다.
 
-Azure Storage 계정 소유자인 경우 자동으로 데이터에 액세스할 수 있는 권한이 할당되지 않습니다. AzCopy를 사용하여 의미 있는 작업을 수행할 수 있으려면 먼저 스토리지 서비스에 권한 부여 자격 증명을 제공하는 방법을 결정해야 합니다. 
+먼저 AzCopy V10 실행 파일을 컴퓨터의 아무 디렉터리에나 다운로드합니다. 
 
 ## <a name="authorize-azcopy"></a>AzCopy 권한 부여
 
@@ -41,9 +33,9 @@ AD(Azure Active Directory) 또는 SAS(공유 액세스 서명) 토큰을 사용�
 
 ### <a name="option-1-use-azure-active-directory"></a>옵션 1: Azure Active Directory 사용
 
-이 옵션은 Blob Storage에만 사용할 수 있습니다. Azure Active Directory를 사용하면 각 명령에 SAS 토큰을 추가할 필요 없이 자격 증명을 한 번 제공할 수 있습니다.  
+AzCopy V10은 실행 파일일 뿐 이므로 아무것도 설치할 것이 없습니다.  
 
-> **참고:** 현재 릴리스에서는 스토리지 계정 간에 Blob를 복사할 계획이면 SAS 토큰을 각 원본 URL에 추가해야 합니다. SAS 토큰은 대상 URL에서만 생략할 수 있습니다. 예제는 [스토리지 계정 간에 Blob 복사](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-data)를 참조하세요.
+> <bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> In the current release, if you plan to copy blobs between storage accounts, you'll have to append a SAS token to each source URL. You can omit the SAS token only from the destination URL. For examples, see <bpt id="p1">[</bpt>Copy blobs between storage accounts<ept id="p1">](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10#transfer-data)</ept>.
 
 Azure AD를 사용하여 액세스 권한을 부여하는 방법은 [AzCopy 및 Azure AD(Azure Active Directory)를 사용하여 Blob에 대한 액세스 권한 부여](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-authorize-azure-active-directory)를 참조하세요.
 
@@ -51,7 +43,7 @@ Azure AD를 사용하여 액세스 권한을 부여하는 방법은 [AzCopy 및 
 
 AzCopy 명령에서 사용하는 각 원본 또는 대상 URL에 SAS 토큰을 추가할 수 있습니다.
 
-이 예제 명령은 데이터를 로컬 디렉터리에서 Blob 컨테이너로 재귀적으로 복사합니다. 가상의 SAS 토큰이 컨테이너 URL의 끝에 추가됩니다.
+This example command recursively copies data from a local directory to a blob container. A fictitious SAS token is appended to the end of the container URL.
 
 ```azcopy
 azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/?sv=2018-03-28&ss=bjqt&srt=sco&sp=rwddgcup&se=2019-05-01T05:01:17Z&st=2019-04-30T21:01:17Z&spr=https&sig=MGCXiyEzbtttkr3ewJIh2AR8KrghSy1DGM9ovN734bQF4%3D" --recursive=true
@@ -59,7 +51,7 @@ azcopy copy "C:\local\path" "https://account.blob.core.windows.net/mycontainer1/
 
 SAS 토큰에 대해 그리고 이를 얻는 방법에 대해 자세히 알아보려면 [SAS(공유 액세스 서명)를 사용하여 Azure Storage 리소스에 제한적인 액세스 권한 부여](https://docs.microsoft.com/azure/storage/common/storage-sas-overview)를 참조하세요.
 
-> **참고:** 스토리지 계정의 [보안 전송 필요](storage-require-secure-transfer.md) 설정은 스토리지 계정 연결이 TLS(Transport Layer Security)를 통해 보안 처리되는지 여부를 결정합니다. 이 설정은 기본적으로 사용하도록 설정됩니다.   
+> <bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> The <bpt id="p2">[</bpt>Secure transfer required<ept id="p2">](storage-require-secure-transfer.md)</ept> setting of a storage account determines whether the connection to a storage account is secured with Transport Layer Security (TLS). This setting is enabled by default.   
 
 ## <a name="explore-the-help"></a>도움말 살펴보기
 
@@ -71,14 +63,14 @@ SAS 토큰에 대해 그리고 이를 얻는 방법에 대해 자세히 알아�
 ## <a name="download-a-blob-from-blob-storage-to-the-file-system"></a>Blob Storage에서 파일 시스템으로 Blob 다운로드
 
 >**참고:**
->- 이 예시에서는 Blob 컨테이너 및 Blob 파일이 있는 Azure Storage 계정이 필요합니다. 또한 메모장과 같은 텍스트 편집기에서 매개 변수를 캡처해야 합니다.
->- 이 예에서는 경로 인수를 작은따옴표(‘’)로 묶습니다. Windows 명령 셸(cmd.exe)을 제외하고 모든 명령 셸에서 작은따옴표를 사용합니다. Windows 명령 셸(cmd.exe)을 사용하는 경우 작은따옴표(‘’) 대신 큰따옴표(“”)로 경로 인수를 묶습니다.
+>- This example requires an Azure storage account with a blob container and blob file. You will also need to capture parameters in a text editor like Notepad.
+>- This example encloses path arguments with single quotes (''). Use single quotes in all command shells except for the Windows Command Shell (cmd.exe). If you're using a Windows Command Shell (cmd.exe), enclose path arguments with double quotes ("") instead of single quotes ('').
 
 1. Azure Portal에 액세스합니다.
 2. 다운로드하고자 하는 Blob이 있는 스토리지 계정에 액세스합니다.
-3. 관심 있는 Blob으로 드릴다운하고 파일 **속성** 을 확인합니다.
-4. **URL** 정보를 복사합니다. 이것이 원본 경로 *https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-path>* 가 됩니다.
-5. 로컬 대상 디렉터리를 찾습니다. 이것이 *<local-file-path>* 값이 됩니다. 파일 이름도 필요합니다.
+3. 관심 있는 Blob으로 드릴다운하고 파일 **속성**을 확인합니다.
+4. 관련 파일은 zip 파일(Windows 및 Mac) 또는 tar 파일(Linux)로 압축되어 있습니다.
+5. Linux에서 tar 파일을 다운로드하고 압축을 풀려면 Linux 배포에 대한 설명서를 참조하세요.
 6. 값을 사용하여 명령을 구성합니다.
 
     ```
@@ -92,10 +84,10 @@ SAS 토큰에 대해 그리고 이를 얻는 방법에 대해 자세히 알아�
 
 >**참고:**
 >- 이 예제는 이전 예제와 이어지며, 파일이 있는 로컬 디렉터리를 필요로 합니다.
->- 이 예에서는 경로 인수를 작은따옴표(‘’)로 묶습니다. Windows 명령 셸(cmd.exe)을 제외하고 모든 명령 셸에서 작은따옴표를 사용합니다. Windows 명령 셸(cmd.exe)을 사용하는 경우 작은따옴표(‘’) 대신 큰따옴표(“”)로 경로 인수를 묶습니다.
+>- This example encloses path arguments with single quotes (''). Use single quotes in all command shells except for the Windows Command Shell (cmd.exe). If you're using a Windows Command Shell (cmd.exe), enclose path arguments with double quotes ("") instead of single quotes ('').
 
 1. 명령의 *<local-file-path>* 원본은 파일이 있는 로컬 디렉토리가 됩니다. 
-2. 명령의 *https://<storage-account-name>.<blob or dfs>.core.windows.net/<container-name>/<blob-name>* 대상은 이전 예제에서 사용된 Blob URL이 됩니다. 파일 이름을 제거하고 스토리지 계정과 컨테이너를 포함하세요. 
+2. The <bpt id="p1">*</bpt>https://&lt;storage-account-name&gt;.<ph id="ph1">&lt;blob or dfs&gt;</ph>.core.windows.net/&lt;container-name&gt;/&lt;blob-name&gt;<ept id="p1">*</ept> destination for the command will the blob URL used in the previous example. Be sure to remove the filename, just include the storage account and container. 
 3. 값을 사용하여 명령을 구성합니다.
 
     ```
