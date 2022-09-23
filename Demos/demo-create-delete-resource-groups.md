@@ -1,26 +1,26 @@
-# 데모: 리소스 그룹 만들기 및 삭제
+# <a name="demonstration-create-and-delete-resource-groups"></a>데모: 리소스 그룹 만들기 및 삭제
 
 >**참고**: owner 및 사용자 액세스 관리자 역할만 리소스의 잠금을 관리할 수 있습니다.
 
-## 포털에서 리소스 그룹 관리
+## <a name="manage-resource-groups-in-the-portal"></a>포털에서 리소스 그룹 관리
 
 1. Azure Portal에 액세스합니다.
-1. 리소스 그룹을 만듭니다. 이 리소스 그룹의 이름을 기억합니다. 
+1. Create a resource group. Remember the name of this resource group. 
 1. 리소스 그룹의 **설정** 블레이드에서 **잠금**을 선택합니다.
-1. 잠금을 추가하려면 에 **추가**를 선택합니다. 상위 수준에서 잠금을 만들려면 상위를 선택합니다. 현재 선택한 리소스는 상위로부터 잠금을 상속합니다. 예를 들어, 리소스 그룹을 잠궈 해당 그룹의 모든 리소스에 잠금을 적용할 수 있습니다.
-1. 잠금에 **이름**과 **잠금 유형**을 지정합니다. 선택적으로 잠금을 설명하는 메모를 추가할 수 있습니다.
-1. 잠금을 삭제하려면 사용 가능한 옵션에서 줄임표를 선택하고 **삭제**합니다.
+1. To add a lock, select <bpt id="p1">**</bpt>Add<ept id="p1">**</ept>. If you want to create a lock at a parent level, select the parent. The currently selected resource inherits the lock from the parent. For example, you could lock the resource group to apply a lock to all its resources.
+1. Give the lock a <bpt id="p1">**</bpt>name<ept id="p1">**</ept> and <bpt id="p2">**</bpt>lock type<ept id="p2">**</ept>. Optionally, you can add notes that describe the lock.
+1. 잠금을 삭제하려면 사용 가능한 옵션에서 줄임표와 **삭제** 를 선택합니다.
 
-## PowerShell을 사용하여 리소스 그룹 관리
+## <a name="manage-resource-groups-with-powershell"></a>PowerShell을 사용하여 리소스 그룹 관리
 
-1. Cloud Shell 구성
+1. Cloud Shell에 액세스합니다.
 2. 리소스 잠금을 만들고 작업을 확인합니다.
 
     ```
         New-AzResourceLock -LockName <lockName> -LockLevel CanNotDelete -ResourceGroupName <resourceGroupName>
     ```
 
-3. 리소스 잠금 정보를 확인합니다. 다음 단계에서 잠금을 삭제하는 데 사용할 LockId를 확인합니다.
+3. View resource lock information. Notice the LockId that will be used in the next step to delete the lock.
 
     ```
         Get-AzResourceLock
