@@ -10,7 +10,7 @@
 3. **추가**를 클릭합니다.
 4. **이름**, **구독**, **리소스 그룹** 및 **위치**를 입력합니다. 
 5. 새 자격 증명 모음은 파일 공유와 동일한 위치에 있어야 합니다. 
-5. Click <bpt id="p1">**</bpt>Create<ept id="p1">**</ept>. It can take several minutes for the Recovery Services vault to be created. Monitor the status notifications in the upper right-hand area of the portal. Once your vault is created, it appears in the list of Recovery Services vaults. 
+5. **만들기**를 클릭합니다. Recovery Services 자격 증명 모음을 만드는 데 몇 분 정도 걸릴 수 있습니다. 포털의 오른쪽 위 영역에 있는 상태 알림을 모니터링합니다. 자격 증명 모음이 생성되면 Recovery Services 자격 증명 모음 목록에 표시됩니다. 
 6. 몇 분 후 자격 증명 모음이 추가되지 않으면 **새로 고침**을 클릭합니다.
 
 ## <a name="configure-the-vault"></a>자격 증명 모음 구성
@@ -20,13 +20,13 @@
 3. **워크로드가 실행되는 위치** 드롭다운 메뉴에서 **Azure**를 선택합니다.
 4. **백업할 항목** 메뉴에서 **Azure FileShare**를 선택합니다.
 5. **백업**을 클릭합니다.
-6. From the list of Storage accounts, <bpt id="p1">**</bpt>select a storage account<ept id="p1">**</ept>, and click <bpt id="p2">**</bpt>OK<ept id="p2">**</ept>. Azure searches the storage account for files shares that can be backed up. If you recently added your file shares, allow a little time for the file shares to appear.
+6. 스토리지 계정 목록에서 **스토리지 계정을 선택**하고 **확인**을 클릭합니다. Azure는 스토리지 계정에서 백업 가능한 파일 공유를 검색합니다. 최근에 파일 공유를 추가한 경우 파일 공유가 표시될 때까지 좀 기다려주세요.
 7. File Shares 목록에서 백업할 **파일 공유 중 하나 이상을 선택하고** **확인**을 클릭합니다.
-8. On the Backup Policy page, choose <bpt id="p1">**</bpt>Create New backup policy<ept id="p1">**</ept> and provide Name, Schedule, and Retention information. Click <bpt id="p1">**</bpt>OK<ept id="p1">**</ept>.
+8. 백업 정책 페이지에서 **새 백업 정책 만들기**를 선택하고 이름, 스케줄 및 재방문 주기 정보를 제공합니다. **확인**을 클릭합니다.
 9. 백업 구성이 완료되면 **백업 사용**을 클릭합니다. 
 
 ## <a name="explore-recovery-services-vault-information"></a>Recovery Services 자격 증명 모음 정보 살펴보기
 
-1. Explore the <bpt id="p1">**</bpt>Backup items<ept id="p1">**</ept> blade. There is information on backed up items and replicated items.
-2. Explore the <bpt id="p1">**</bpt>Backup policies<ept id="p1">**</ept> blade. You can add or delete backup policies. 
-3. Explore the <bpt id="p1">**</bpt>Backup jobs<ept id="p1">**</ept> blade. Here you can review the status of your backup jobs.
+1. **백업 항목** 블레이드를 탐색합니다. 백업된 항목과 복제된 항목에 대한 정보가 있습니다.
+2. **백업 정책** 블레이드를 살펴보세요. 백업 정책을 추가하거나 삭제할 수 있습니다. 
+3. **백업 작업** 블레이드를 탐색합니다. 여기에서 백업 작업의 상태를 검토할 수 있습니다.

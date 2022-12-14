@@ -4,14 +4,14 @@
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
-1. Make sure that you have the Azure PowerShell Az module. If you need to install or upgrade Azure PowerShell, follow this <bpt id="p1">[</bpt>Guide to install and configure Azure PowerShell<ept id="p1">](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-5.0.0)</ept>.
-2. The minimum Azure PowerShell Az version should be 4.1.0. To check the current version, use the below command:
+1. Azure PowerShell Az 모듈이 있어야 합니다. Azure PowerShell을 설치하거나 업그레이드해야 하는 경우 [Azure PowerShell 설치 및 구성하는 방법](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-5.0.0)을 참조하세요.
+2. 최소 Azure PowerShell Az 버전은 4.1.0이어야 합니다. 현재 버전을 확인하려면 다음 명령을 사용합니다.
 
     ```azurepowershell
     Get-InstalledModule -Name Az
     ```
 
-><bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> Make sure that you have the unique ID of the target Proximity Placement Group handy. If you're creating a new Proximity Placement Group, then check the command <bpt id="p1">[</bpt>here<ept id="p1">](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)</ept> and if you're using an existing Proximity Placement Group, then use the command <bpt id="p2">[</bpt>here<ept id="p2">](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)</ept>.
+>**참고:** 대상 근접 배치 그룹의 고유 ID가 있는지 확인합니다. 새 근접 배치 그룹을 만드는 경우 [여기](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)에서 명령을 확인하고 기존 근접 배치 그룹을 사용하는 경우 [여기](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)에서 명령을 사용합니다.
 
 ## <a name="sign-in-to-your-microsoft-azure-subscription"></a>Microsoft Azure 구독에 로그인
 
@@ -21,7 +21,7 @@
     Connect-AzAccount
     ```
 
-1. Select your Azure subscription. Use the <ph id="ph1">`Get-AzSubscription`</ph> cmdlet to get the list of Azure subscriptions you have access to. Select the Azure subscription to work with using the <ph id="ph1">`Set-AzContext`</ph> cmdlet.
+1. Azure 구독을 선택합니다. `Get-AzSubscription` cmdlet을 사용하여 액세스 권한이 있는 Azure 구독 목록을 가져옵니다. `Set-AzContext` cmdlet을 사용하여 작업에 사용할 Azure 구독을 선택합니다.
 
     ```azurepowershell
     Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -29,7 +29,7 @@
 
 ## <a name="get-details-of-the-virtual-machine-to-be-replicated"></a>복제할 가상 머신의 세부 정보 가져오기
 
-1. Azure PowerShell Az 모듈이 있어야 합니다.
+1. 이 데모에서는 미국 동부 지역의 가상 머신이 미국 서부 2 지역에 복제되고 복구됩니다. 복제되는 가상 머신에는 OS 디스크와 단일 데이터 디스크가 있습니다. 이 예제에서 사용되는 가상 머신의 이름은 `AzureDemoVM`입니다.
 
     ```azurepowershell
     # Get details of the virtual machine
@@ -54,7 +54,7 @@
     StorageProfile     : {ImageReference, OsDisk, DataDisks}
     ```
 
-1. Azure PowerShell을 설치하거나 업그레이드해야 하는 경우 [Azure PowerShell 설치 및 구성하는 방법](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-5.0.0)을 참조하세요.
+1. 가상 머신의 디스크에 대한 디스크 세부 정보를 가져옵니다. 디스크 세부 정보는 나중에 가상 머신에 대한 복제를 시작할 때 사용됩니다.
 
     ```azurepowershell
     $OSDiskVhdURI = $VM.StorageProfile.OsDisk.Vhd
@@ -70,7 +70,7 @@
     > * Recovery Services 자격 증명 모음의 리소스 그룹과 보호 중인 가상 머신은 다른 Azure 위치에 있어야 합니다.
     > * Recovery Services 자격 증명 모음 및 이에 속한 리소스 그룹은 동일한 Azure 위치에 있을 수 있습니다.
 
-1. In this demo, the virtual machine being protected is in the East US region. The recovery region selected for disaster recovery is the West US 2 region. The recovery services vault, and the resource group of the vault, are both in the recovery region, West US 2.
+1. 이 데모에서 보호되는 가상 머신은 미국 동부 지역에 있습니다. 재해 복구를 위해 선택한 복구 지역은 미국 서부 2 지역입니다. Recovery Services 자격 증명 모음과 자격 증명 모음의 리소스 그룹은 둘 다 복구 지역인 미국 서부 2에 있습니다.
 
     ```azurepowershell
     #Create a resource group for the recovery services vault in the recovery Azure region
@@ -85,7 +85,7 @@
     ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
     ```
 
-1. 최소 Azure PowerShell Az 버전은 4.1.0이어야 합니다.
+1. Recovery Services 자격 증명 모음을 만듭니다. 이 예제에서는 `a2aDemoRecoveryVault`라는 Recovery Services 자격 증명 모음이 미국 서부 2 지역에 생성됩니다.
 
     ```azurepowershell
     #Create a new Recovery services vault in the recovery region
@@ -106,7 +106,7 @@
 
 ## <a name="set-the-vault-context"></a>자격 증명 모음 컨텍스트 설정
 
-1. 현재 버전을 확인하려면 다음 명령을 사용합니다.
+1. PowerShell 세션에 사용할 자격 증명 모음 컨텍스트를 설정합니다. 자격 증명 모음 컨텍스트를 설정한 후에는 PowerShell 세션의 Azure Site Recovery 작업이 선택한 자격 증명 모음의 컨텍스트에서 수행됩니다.
 
     ```azurepowershell
     #Setting the vault context.
@@ -135,12 +135,12 @@
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>기본(원본) 지역을 나타내는 Site Recovery 패브릭 개체 만들기
 
-The fabric object in the vault represents an Azure region. The primary fabric object is created to represent the Azure region that virtual machines being protected to the vault belong to. In this demo, the virtual machine being protected is in the East US region.
+자격 증명 모음에 있는 패브릭 개체는 Azure 지역을 나타냅니다. 기본 패브릭 개체는 자격 증명 모음에 보호 중인 가상 머신이 속한 Azure 지역을 나타내기 위해 작성됩니다. 이 데모에서 보호되는 가상 머신은 미국 동부 지역에 있습니다.
 
 - 패브릭 개체는 지역당 하나만 만들 수 있습니다.
-- **참고:** 대상 근접 배치 그룹의 고유 ID가 있는지 확인합니다.
+- Azure Portal에서 VM에 대한 Site Recovery 복제를 이전에 사용하도록 설정한 경우, Site Recovery가 패브릭 개체를 자동으로 만듭니다. 특정 지역의 패브릭 개체가 있으면 새 개체를 만들 수 없습니다.
 
-새 근접 배치 그룹을 만드는 경우 [여기](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#create-a-proximity-placement-group)에서 명령을 확인하고 기존 근접 배치 그룹을 사용하는 경우 [여기](https://docs.microsoft.com/azure/virtual-machines/windows/proximity-placement-groups#list-proximity-placement-groups)에서 명령을 사용합니다.
+시작하기 전에 Site Recovery 작업이 비동기적으로 실행된다는 것을 파악합니다. 작업을 시작하면 Azure Site Recovery 작업이 제출되고 작업 추적 개체가 반환됩니다.
 
 1. 작업 추적 개체를 사용하여 작업(`Get-AzRecoveryServicesAsrJob`)의 최신 상태를 가져오고 작업 상태를 모니터링할 수 있습니다.
 
@@ -165,7 +165,7 @@ The fabric object in the vault represents an Azure region. The primary fabric ob
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>복구 지역을 나타내는 Site Recovery 패브릭 개체 만들기
 
-The recovery fabric object represents the recovery Azure location. If there's a failover, virtual machines are replicated and recovered to the recovery region represented by the recovery fabric. The recovery Azure region used in this example is West US 2.
+복구 패브릭 개체는 복구 Azure 위치를 나타냅니다. 장애 조치가 있는 경우 가상 머신이 복제되고 복구 패브릭에 표시된 복구 지역으로 복구됩니다. 이 예에서 사용된 복구 Azure 지역은 미국 서부 2입니다.
 
 ```azurepowershell
 #Create Recovery ASR fabric
@@ -245,7 +245,7 @@ $ReplicationPolicy = Get-AzRecoveryServicesAsrPolicy -Name "A2APolicy"
 
 ### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>기본 및 복구 보호 컨테이너 간의 보호 컨테이너 매핑을 만듭니다.
 
-A protection container mapping maps the primary protection container with a recovery protection container and a replication policy. Create one mapping for each replication policy that you'll use to replicate virtual machines between a protection container pair.
+보호 컨테이너 매핑은 복구 보호 컨테이너 및 복제 정책을 사용하여 기본 보호 컨테이너를 매핑합니다. 보호 컨테이너 쌍 간에 가상 머신을 복제하는 데 사용할 각 복제 정책에 대한 매핑을 하나 만듭니다.
 
 ```azurepowershell
 #Create Protection container mapping between the Primary and Recovery Protection Containers with the Replication policy
@@ -265,7 +265,7 @@ $EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>장애 복구(failback)에 대한 보호 컨테이너 매핑을 만듭니다(장애 조치(failover) 후 역방향 복제).
 
-After a failover, when you're ready to bring the failed over virtual machine back to the original Azure region, you do a failback. To fail back, the failed over virtual machine is reverse replicated from the failed over region to the original region. For reverse replication the roles of the original region and the recovery region switch. The original region now becomes the new recovery region, and what was originally the recovery region now becomes the primary region. The protection container mapping for reverse replication represents the switched roles of the original and recovery regions.
+장애 조치 후, 장애 조치된 가상 머신을 원래 Azure 지역으로 다시 되돌릴 준비가 되면 장애 복구(failback)를 수행합니다. 장애 복구를 위해 장애 조치된 가상 머신이 장애 조치된 지역에서 원래 지역으로 역방향 복제됩니다. 역방향 복제의 경우 원래 지역과 복구 지역의 역할이 바뀝니다. 이제 원래 지역이 새 복구 지역이 되고 원래 복구 지역이었던 곳이 기본 지역이 됩니다. 역방향 복제에 대한 보호 컨테이너 매핑은 원래 지역과 복구 지역의 전환된 역할을 나타냅니다.
 
 ```azurepowershell
 #Create Protection container mapping (for fail back) between the Recovery and Primary Protection Containers with the Replication policy
@@ -285,14 +285,14 @@ $WusToEusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Protec
 
 ## <a name="create-cache-storage-account-and-target-storage-account"></a>캐시 스토리지 계정 및 대상 스토리지 계정 만들기
 
-Azure 구독을 선택합니다.
+캐시 스토리지 계정은 복제되는 가상 머신과 같은 Azure 지역에 있는 표준 스토리지 계정입니다. 캐시 스토리지 계정은 변경 내용이 복구 Azure 지역으로 이동하기 전에 복제 변경을 일시적으로 유지하는 데 사용됩니다. 가상 머신의 디스크마다 다른 캐시 스토리지 계정을 지정할 수 있지만 필수는 아닙니다.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
 $EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
-`Get-AzSubscription` cmdlet을 사용하여 액세스 권한이 있는 Azure 구독 목록을 가져옵니다.
+**관리 디스크를 사용하지 않는** 가상 머신의 경우 대상 스토리지 계정은 가상 머신의 디스크가 복제되는 복구 지역에 있는 스토리지 계정입니다. 대상 스토리지 계정은 표준 스토리지 계정 또는 Premium Storage 계정 중 하나일 수 있습니다. 디스크의 데이터 변경률(IO 쓰기 속도)과 Azure Site Recovery에서 스토리지 유형에 대해 지원하는 변동 한도에 따라 필요한 스토리지 계정 종류를 선택합니다.
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
@@ -301,7 +301,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
 
 ## <a name="create-network-mappings"></a>네트워크 매핑 만들기
 
-`Set-AzContext` cmdlet을 사용하여 작업에 사용할 Azure 구독을 선택합니다.
+네트워크 매핑은 기본 지역의 가상 네트워크를 복구 지역의 가상 네트워크에 연결합니다. 네트워크 매핑은 주 가상 네트워크의 가상 머신이 장애 조치되어야 하는 복구 지역의 Azure Virtual Network를 지정합니다. 하나의 Azure Virtual Network는 복구 지역의 단일 Azure Virtual Network에만 매핑할 수 있습니다.
 
 1. 장애 조치할 복구 지역에서 Azure Virtual Network를 만듭니다.
 
@@ -314,7 +314,7 @@ $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -Res
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
 
-1. Retrieve the primary virtual network. The VNet that the virtual machine is connected to:
+1. 주 가상 네트워크를 검색합니다. 가상 머신이 연결된 VNet입니다.
 
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
@@ -516,7 +516,7 @@ Errors           : {}
 
 테스트 장애 조치 작업이 성공적으로 완료되면 테스트 장애 조치된 가상 머신에 연결하고 테스트 장애 조치의 유효성을 검사할 수 있습니다.
 
-Once testing is complete on the test failed over virtual machine, clean up the test copy by starting the cleanup test failover operation. This operation deletes the test copy of the virtual machine that was created by the test failover.
+테스트 장애 조치(failover)된 가상 머신에서 테스트가 완료되면 테스트 장애 조치(failover) 정리 작업을 시작하여 테스트 복사본을 정리합니다. 이 작업은 테스트 장애 조치(failover)로 만들어진 가상 머신의 테스트 복사본을 삭제합니다.
 
 ```azurepowershell
 $Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicationProtectedItem

@@ -4,7 +4,7 @@
 
 1. Azure Portal에 액세스합니다.
 2. **네트워크 보안 그룹** 블레이드를 검색하고 액세스합니다.
-3. If you have virtual machines, you may already have NSGs. Notice the ability to filter the list.
+3. 가상 머신이 있는 경우 이미 NSG가 있을 수 있습니다. 목록을 필터링하는 기능을 확인합니다.
 
 ## <a name="add-a-new-nsg"></a>새 NSG 추가
 
@@ -29,7 +29,7 @@
 6. 새 인바운드 보안 규칙을 **+ 추가**합니다.
 7. **기본**을 클릭하여 고급 모드로 변경합니다.
 8. **서비스** 드롭다운을 사용하여 사용 가능한 미리 정의된 서비스를 검토합니다.
-9. When you make a service selection (like HTTPS) the port range (like 443) is automatically populated. This makes it easy to configure the rule.
+9. 서비스(예: HTTPS)를 선택하면 포트 범위(예: 443)가 자동으로 채워집니다. 이렇게 하면 규칙을 쉽게 구성할 수 있습니다.
 10. 우선 순위 레이블 옆에 있는 정보 아이콘을 사용하여 우선 순위를 구성하는 방법을 알아봅니다.
 11. 변경하지 않고 규칙을 종료합니다. 
 12. 시간이 있는 경우 아웃바운드 보안 규칙을 추가하는 것을 검토하세요.

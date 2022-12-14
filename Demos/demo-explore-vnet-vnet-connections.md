@@ -1,6 +1,6 @@
 # <a name="demonstration-explore-vnet-to-vnet-connections"></a>데모: VNet 간 연결 살펴보기
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This demonstration works best with two virtual networks with subnets. All the steps are in the portal. 
+>**참고**: 이 데모는 서브넷이 있는 가상 네트워크 2개를 사용하는 경우 가장 효율적으로 작동합니다. 모든 단계는 Portal에서 수행합니다. 
 
 ## <a name="explore-the-gateway-subnet-blade"></a>게이트웨이 서브넷 블레이드 살펴보기
 
@@ -8,10 +8,10 @@
 1. **+ 게이트웨이 서브넷**을 선택합니다.
 
     - 서브넷의 이름은 변경할 수 없습니다.  
-    - Notice the <bpt id="p1">**</bpt>address range<ept id="p1">**</ept> of the gateway subnet. The address must be contained by the address space of the virtual network. 
+    - 게이트웨이 서브넷의 **주소 범위**를 확인합니다. 주소는 가상 네트워크의 주소 공간에 포함되어 있어야 합니다. 
 
 1. 각 가상 네트워크에는 게이트웨이 서브넷이 필요합니다. 
-1. **참고**: 이 데모는 서브넷이 있는 가상 네트워크 2개를 사용하는 경우 가장 효율적으로 작동합니다.
+1. 게이트웨이 서브넷 추가 페이지를 닫습니다. 변경 내용을 저장할 필요는 없습니다.
 
 ## <a name="explore-the-connected-devices-blade"></a>연결된 디바이스 블레이드 살펴보기
 
@@ -29,7 +29,7 @@
 5. **게이트웨이 유형**, **VPN 유형** 및 **SKU**를 확인합니다. 
 6. **공용 IP 주소**가 필요합니다.
 7. 각 가상 네트워크에는 가상 네트워크 게이트웨이가 필요함을 명심하세요. 
-8. 모든 단계는 Portal에서 수행합니다. 
+8. **가상 네트워크 게이트웨이 추가** 페이지를 닫습니다. 변경 내용을 저장할 필요는 없습니다. 
 
 ## <a name="explore-adding-a-connection-between-the-virtual-networks"></a>가상 네트워크 간 연결 추가 방법 살펴보기
 
@@ -40,4 +40,4 @@
 5. **설정** 페이지에서 두 개의 서로 다른 가상 네트워크를 선택해야 합니다.
 6. **양방향 연결 설정** 체크박스에서 도움말 정보를 읽어보십시오.
 7. **공유 키(PSK)** 정보를 확인합니다.
-8. Close the <bpt id="p1">**</bpt>Add connection<ept id="p1">**</ept> page. You do not need to save your changes. 
+8. **연결 추가** 페이지를 닫습니다. 변경 내용을 저장할 필요는 없습니다. 

@@ -2,7 +2,7 @@
 
 ## <a name="locate-access-control-blade"></a>액세스 제어 창 찾기
 
-1. Access the Azure portal, and select a resource group. Make a note of what resource group you use. 
+1. Azure Portal에 액세스하고 리소스 그룹을 선택합니다. 어떤 리소스 그룹을 사용하는지 메모합니다. 
 2. **액세스 제어(IAM)** 창을 닫습니다. 
 3. 이 창은 액세스를 제어할 수 있도록 다양한 리소스에 대해 사용할 수 있습니다.
 

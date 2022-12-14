@@ -28,7 +28,7 @@
     $storageContext = New-AzStorageContext storage-account-name storage-account-key
     ```
 
-2. Create the file share. The name of your file share must be all lowercase.
+2. 파일 공유를 생성합니다. 파일 공유의 이름은 모두 소문자여야 합니다.
 
     ```PowerShell
     $share = New-AzStorageShare logs -Context $storageContext
@@ -36,7 +36,7 @@
 
 ## <a name="mount-a-file-share-powershell"></a>파일 공유 탑재(PowerShell)
 
-1. Run the following commands from a regular (i.e. not an elevated) PowerShell session to mount the Azure file share. Remember to replace <bpt id="p1">**</bpt>your-resource-group-name<ept id="p1">**</ept>, <bpt id="p2">**</bpt>your-storage-account-name<ept id="p2">**</ept>, <bpt id="p3">**</bpt>your-file-share-name<ept id="p3">**</ept>, and <bpt id="p4">**</bpt>desired-drive-letter<ept id="p4">**</ept> with the proper information.
+1. 일반(즉, 관리자 권한이 아닌) PowerShell 세션에서 다음 명령을 실행하여 Azure 파일 공유를 탑재합니다. **your-resource-group-name**, **your-storage-account-name**, **your-file-share-name**, **desired-drive-letter**를 적절한 정보로 교체해야 합니다.
 
     ```PowerShell
     $resourceGroupName = "your-resource-group-name"

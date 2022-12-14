@@ -42,15 +42,15 @@
 ```
 Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" | Select "IpAddress"
 ```
-2. Create an RDP session from your local machine. Replace the IP address with the public IP address of your VM. This command runs from a cmd window.
+2. 로컬 머신에서 RDP 세션을 만듭니다. IP 주소를 VM의 공용 IP 주소로 바꿉니다. cmd 창에서 다음 명령이 실행됩니다.
 
 ```
 mstsc /v:publicIpAddress
 ```
 
-3. When prompted, provide your login credentials for the machine. Be sure to <bpt id="p1">**</bpt>Use a different account<ept id="p1">**</ept>. Type the username as localhost\username, enter password you created for the virtual machine, and then select <bpt id="p1">**</bpt>OK<ept id="p1">**</ept>. You may receive a certificate warning during the sign-in process. Select <bpt id="p1">**</bpt>Yes<ept id="p1">**</ept> or <bpt id="p2">**</bpt>Continue<ept id="p2">**</ept> to create the connection
+3. 메시지가 표시되면 머신에 대한 로그인 자격 증명을 제공합니다. **다른 계정을 사용**을 해야 합니다. 사용자 이름을 localhost\username으로 입력하고 가상 머신에서 만든 암호를 입력한 다음 **확인**을 선택합니다. 로그인 프로세스 중에 인증서 경고가 나타날 수 있습니다. **예** 또는 **계속**을 선택하여 연결을 만듭니다.
 4. 여기까지 마쳤으면 VM에 대한 RDP 연결을 닫습니다.
-5. Clean up your resources. This will take a few minutes and remove the resource group and virtual machine.
+5. 리소스를 정리합니다. 이 작업은 몇 분 정도 소요되며 리소스 그룹과 가상 머신이 제거됩니다.
 
 ```
 Remove-AzResourceGroup -Name myResourceGroup 

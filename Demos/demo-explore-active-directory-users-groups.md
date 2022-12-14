@@ -5,14 +5,14 @@
 ## <a name="determine-domain-information"></a>도메인 정보 결정
 
 1. Azure Portal에 액세스하여 **Azure Active Directory** 블레이드로 이동합니다.
-2. Make a note of your available domain name. For example, usergmail.onmicrosoft.com.
+2. 사용 가능한 도메인 이름을 기록해 둡니다. usergmail.onmicrosoft.com을 예로 들 수 있습니다.
 
 ## <a name="explore-user-accounts"></a>사용자 계정 탐색
 
 1. **사용자** 블레이드를 선택합니다.
 2. **새 사용자**를 선택합니다. 
 3. **새 게스트 사용자** 만들기를 위한 선택을 확인합니다.
-4. Create a <bpt id="p1">**</bpt>New user<ept id="p1">**</ept>. Replace your domain. 
+4. **새 사용자**를 만듭니다. 도메인을 바꿉니다. 
 
     + **이름**: *Chris Green*
     + **주소**: *chris@your 도메인*
@@ -55,13 +55,13 @@
     Get-AzADUser
     ```
 
-4. Add the user to the group. Replace <bpt id="p1">**</bpt>groupObjectId<ept id="p1">**</ept> and <bpt id="p2">**</bpt>userObjectId<ept id="p2">**</ept>.
+4. 그룹에 사용자를 추가합니다. **groupObjectId**와 **userObjectId**를 바꿉니다.
 
     ```
     Add-AzADGroupMember -MemberUserPrincipalName ""myemail@domain.com"" -TargetGroupDisplayName ""MyGroupDisplayName""
     ```
 
-5. Verify the members of the group. Replace <bpt id="p1">**</bpt>groupObjectId<ept id="p1">**</ept>.
+5. 그룹의 구성원을 확인합니다. **groupObjectId**를 바꿉니다.
 
     ```
     Get-AzADGroupMember -GroupDisplayName "MyGroupDisplayName"
